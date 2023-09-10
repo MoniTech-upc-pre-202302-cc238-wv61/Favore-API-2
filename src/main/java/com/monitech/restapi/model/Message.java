@@ -13,19 +13,24 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="users")
-public class User {
-    
+@Table(name="Message")
+public class Message {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long message_id;
+
+    @ManyToOne
+    @JoinColumn(name = "chat_id", nullable = false)
+    private Chat chat;
+
+    @ManyToOne
+    @JoinColumn(name = "sender_id", nullable = false)
+    private User sender;
 
     @Column(nullable = false, length = 255)
-    private String name;
+    private String content;
 
-    @Column(nullable = false, length = 255)
-    private String email;
-
-    @Column(nullable = false, length = 255)
-    private String password;
+    @Column(name = "send_date", nullable = false)
+    private LocalDateTime sendDate;
 }

@@ -6,26 +6,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="users")
-public class User {
-    
+@Table(name="Category")
+public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long category_id;
+
+    @Column(name = "category_name", nullable = false, length = 255)
+    private String categoryName;
 
     @Column(nullable = false, length = 255)
-    private String name;
-
-    @Column(nullable = false, length = 255)
-    private String email;
-
-    @Column(nullable = false, length = 255)
-    private String password;
+    private String description;
 }
