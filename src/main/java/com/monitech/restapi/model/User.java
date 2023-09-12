@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.usertype.UserType;
+import com.monitech.restapi.enums.UserType;
 
 @Data
 @Builder
