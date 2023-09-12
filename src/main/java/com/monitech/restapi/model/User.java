@@ -54,5 +54,4 @@ public class User {
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
     }
-
 }
