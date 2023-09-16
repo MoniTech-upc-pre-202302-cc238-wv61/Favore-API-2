@@ -44,7 +44,7 @@ public class Contract {
     @JoinColumn(name = "client_id", nullable = false)
     private User client;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "post_id", referencedColumnName = "post_id")
     private Post post;
 
