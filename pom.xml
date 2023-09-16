@@ -61,6 +61,7 @@
 						</exclude>
 					</excludes>
 					<mainClass>com.monitech.restapi.RestapiApplication</mainClass>
+					<layout>JAR</layout>
 				</configuration>
 			</plugin>
 		</plugins>
