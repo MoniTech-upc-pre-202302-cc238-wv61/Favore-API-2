@@ -59,8 +59,8 @@
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 						</exclude>
-						<mainClass>com.monitech.restapi.RestapiApplication</mainClass>
 					</excludes>
+					<mainClass>com.monitech.restapi.RestapiApplication</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
