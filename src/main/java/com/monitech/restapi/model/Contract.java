@@ -29,6 +29,12 @@ public class Contract {
     @Column(nullable = false, length = 255)
     private String status;
 
+    @Column(name = "payment_method",nullable = false, length = 255)
+    private String paymentMethod;
+
+    @Column(nullable = false)
+    private Double ammount;
+
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;

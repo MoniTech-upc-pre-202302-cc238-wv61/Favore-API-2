@@ -13,18 +13,27 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="Offer")
-public class Offer {
+@Table(name="Post")
+public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long offer_id;
+    private Long post_id;
+
+    @Column(nullable = false, length = 255)
+    private String title;
+
+    @Column(nullable = false, length = 255)
+    private String description;
+
+    @Column(nullable = false)
+    private String[] keywords;
 
     @Column(nullable = false)
     private Double budgetAmount;
 
-    @Column(nullable = false)
-    private LocalDateTime offerDate;
+    @Column(name = "created_at", updatable = false)
+    private LocalDateTime createdAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -33,4 +42,9 @@ public class Offer {
     @ManyToOne
     @JoinColumn(name = "contract_id", nullable = false)
     private Contract contract;
+
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDateTime.now();
+    }
 }
