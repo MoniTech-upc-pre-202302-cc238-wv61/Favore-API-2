@@ -16,4 +16,8 @@ public interface ApplicationService {
     Application deleteApplication(Long application_id);
 
     List<Application> getAllApplications();
+
+    boolean existsByApplicationUserId(Long id);
+
+    Application findByApplicationUserId(Long id);
 }
