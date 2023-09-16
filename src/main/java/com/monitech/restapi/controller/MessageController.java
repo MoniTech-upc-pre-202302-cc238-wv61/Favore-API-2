@@ -41,7 +41,7 @@ public class MessageController {
     //Method: POST
     @Transactional
     @PostMapping("/messages")
-    public ResponseEntity<Message> createMessage(Message message) {
+    public ResponseEntity<Message> createMessage(@RequestBody Message message) {
         validateMessage(message);
         Message createdMessage = messageService.createMessage(message);
         return ResponseEntity.ok(createdMessage);
@@ -69,7 +69,7 @@ public class MessageController {
     //Method: PUT
     @Transactional
     @PutMapping("/messages/{message_id}")
-    public ResponseEntity<Message> updateMessage(@PathVariable(value = "message_id") Long message_id, Message message) {
+    public ResponseEntity<Message> updateMessage(@PathVariable(value = "message_id") Long message_id,@RequestBody Message message) {
         validateMessage(message);
         Message updatedMessage = messageService.updateMessage(message_id, message);
         return ResponseEntity.ok(updatedMessage);

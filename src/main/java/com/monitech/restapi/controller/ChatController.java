@@ -35,7 +35,7 @@ public class ChatController {
     //Method: POST
     @Transactional
     @PostMapping("/chats")
-    public ResponseEntity<Chat> createChat(Chat chat) {
+    public ResponseEntity<Chat> createChat(@RequestBody Chat chat) {
         validateChat(chat);
         Chat createdChat = chatService.createChat(chat);
         return ResponseEntity.ok(createdChat);
@@ -63,7 +63,7 @@ public class ChatController {
     //Method: PUT
     @Transactional
     @PutMapping("/chats/{chat_id}")
-    public ResponseEntity<Chat> updateChat(@PathVariable(value = "chat_id") Long chat_id, Chat chat) {
+    public ResponseEntity<Chat> updateChat(@PathVariable(value = "chat_id") Long chat_id,@RequestBody Chat chat) {
         validateChat(chat);
         Chat updatedChat = chatService.updateChat(chat_id, chat);
         return ResponseEntity.ok(updatedChat);

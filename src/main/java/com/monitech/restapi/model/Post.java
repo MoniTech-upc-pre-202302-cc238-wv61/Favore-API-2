@@ -35,16 +35,16 @@ public class Post {
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
+    @OneToOne(mappedBy = "post")
+    private Contract contract;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "contract_id", nullable = false)
-    private Contract contract;
-
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
+        this.budgetAmount = 0.0;
     }
 }

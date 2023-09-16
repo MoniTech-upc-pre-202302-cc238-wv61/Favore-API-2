@@ -4,13 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.monitech.restapi.exception.ValidationException;
 import com.monitech.restapi.model.User;
@@ -60,7 +54,7 @@ public class UserController {
     //Method: POST
     @Transactional
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(User user) {
+    public ResponseEntity<User> createUser(@RequestBody User user) {
         validateUser(user);
         validateUserExistence(user);
         User createdUser = userService.createUser(user);
@@ -89,7 +83,7 @@ public class UserController {
     //Method: PUT
     @Transactional
     @PutMapping("/users/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable(value = "id") Long id, User user) {
+    public ResponseEntity<User> updateUser(@PathVariable(value = "id") Long id,@RequestBody User user) {
         validateUser(user);
         User updatedUser = userService.updateUser(id, user);
         return ResponseEntity.ok(updatedUser);
