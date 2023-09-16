@@ -27,9 +27,6 @@ public class PostController {
         if (post.getUser() == null) {
             throw new ValidationException("User reference is required");
         }
-        if (post.getContract() == null) {
-            throw new ValidationException("Contract reference is required");
-        }
     }
 
     @Autowired
@@ -41,7 +38,7 @@ public class PostController {
     //Method: POST
     @Transactional
     @PostMapping("/posts")
-    public ResponseEntity<Post> createPost(Post post) {
+    public ResponseEntity<Post> createPost(@RequestBody Post post) {
         validatePost(post);
         Post createdPost = postService.createPost(post);
         return ResponseEntity.ok(createdPost);
@@ -69,7 +66,7 @@ public class PostController {
     //Method: PUT
     @Transactional
     @PutMapping("/posts/{post_id}")
-    public ResponseEntity<Post> updatePost(@PathVariable(value = "post_id") Long post_id, Post post) {
+    public ResponseEntity<Post> updatePost(@PathVariable(value = "post_id") Long post_id,@RequestBody Post post) {
         validatePost(post);
         Post updatedPost = postService.updatePost(post_id, post);
         return ResponseEntity.ok(updatedPost);

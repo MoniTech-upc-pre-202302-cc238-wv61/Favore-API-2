@@ -20,8 +20,8 @@ public class LoginController {
     private final UserService userService;
 
     private void validateUserExistence(UserCredentialsDTO user) {
-        if (userService.existsByEmail(user.getEmail())) {
-            throw new ValidationException("User with email: " + user.getEmail() + " already exists");
+        if (!userService.existsByEmail(user.getEmail())) {
+            throw new ValidationException("User with email: " + user.getEmail() + " does not exist");
         }
     }
 

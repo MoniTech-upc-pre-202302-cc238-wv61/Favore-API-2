@@ -26,9 +26,6 @@ public class ContractController {
         if (contract.getDescription() == null || contract.getDescription().isEmpty()) {
             throw new ValidationException("Description is required");
         }
-        if (contract.getPublishDate() == null) {
-            throw new ValidationException("Publish date is required");
-        }
         if (contract.getStatus() == null || contract.getStatus().isEmpty()) {
             throw new ValidationException("Status is required");
         }
@@ -47,7 +44,8 @@ public class ContractController {
     //Method: POST
     @Transactional
     @PostMapping("/contracts")
-    public ResponseEntity<Contract> createContract(Contract contract) {
+    public ResponseEntity<Contract> createContract(@RequestBody Contract contract) {
+        System.out.println(contract);
         validateContract(contract);
         Contract createdContract = contractService.createContract(contract);
         return ResponseEntity.ok(createdContract);
@@ -75,7 +73,7 @@ public class ContractController {
     //Method: PUT
     @Transactional
     @PutMapping("/contracts/{contract_id}")
-    public ResponseEntity<Contract> updateContract(@PathVariable(value = "contract_id") Long contract_id, Contract contract) {
+    public ResponseEntity<Contract> updateContract(@PathVariable(value = "contract_id") Long contract_id,@RequestBody Contract contract) {
         validateContract(contract);
         Contract updatedContract = contractService.updateContract(contract_id, contract);
         return ResponseEntity.ok(updatedContract);

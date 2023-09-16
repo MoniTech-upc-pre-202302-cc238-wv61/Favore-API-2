@@ -23,9 +23,6 @@ public class Contract {
     @Column(nullable = false, length = 255)
     private String description;
 
-    @Column(nullable = false)
-    private LocalDateTime publishDate;
-
     @Column(nullable = false, length = 255)
     private String status;
 
@@ -46,6 +43,10 @@ public class Contract {
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
     private User client;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id", referencedColumnName = "post_id")
+    private Post post;
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
