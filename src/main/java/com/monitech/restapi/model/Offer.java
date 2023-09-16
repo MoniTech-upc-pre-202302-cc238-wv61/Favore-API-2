@@ -18,7 +18,7 @@ public class Offer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long offer_id;
+    private String offer_id;
 
     @Column(nullable = false)
     private Double budgetAmount;

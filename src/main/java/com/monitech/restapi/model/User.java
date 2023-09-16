@@ -20,7 +20,7 @@ public class User {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     @Column(name="first_name", nullable = false, unique = true)
     private String name;

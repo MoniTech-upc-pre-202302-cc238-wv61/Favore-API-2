@@ -18,7 +18,7 @@ public class Chat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long chat_id;
+    private String chat_id;
 
     @ManyToOne
     @JoinColumn(name = "usuario1_id", nullable = false)
