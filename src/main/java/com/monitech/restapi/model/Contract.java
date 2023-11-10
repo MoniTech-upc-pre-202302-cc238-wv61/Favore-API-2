@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -46,6 +48,7 @@ public class Contract {
 
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "post_id", referencedColumnName = "post_id")
+    @JsonManagedReference
     private Post post;
 
     @Column(name = "created_at", updatable = false)

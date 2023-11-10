@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -36,6 +38,7 @@ public class Post {
     private LocalDateTime createdAt;
 
     @OneToOne(mappedBy = "post")
+    @JsonBackReference
     private Contract contract;
 
     @ManyToOne
