@@ -35,7 +35,7 @@ public class Post {
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-    @OneToOne(mappedBy = "post")
+    @OneToOne(mappedBy = "contract")
     private Contract contract;
 
     @ManyToOne
